@@ -15,6 +15,8 @@
 		7F477F3A1DD8D72C00213977 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F477F381DD8D72C00213977 /* LaunchScreen.storyboard */; };
 		7F477F451DD8D72D00213977 /* Localization_scriptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F477F441DD8D72D00213977 /* Localization_scriptTests.m */; };
 		7F477F501DD8D72D00213977 /* Localization_scriptUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F477F4F1DD8D72D00213977 /* Localization_scriptUITests.m */; };
+		7F477F5F1DD8D7A100213977 /* MainStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F477F5E1DD8D7A100213977 /* MainStrings.strings */; };
+		7F59B19E1DD8F9BC00566F25 /* AlternateStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F59B19D1DD8F9BC00566F25 /* AlternateStrings.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,11 @@
 		7F477F4B1DD8D72D00213977 /* Localization scriptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Localization scriptUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F477F4F1DD8D72D00213977 /* Localization_scriptUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Localization_scriptUITests.m; sourceTree = "<group>"; };
 		7F477F511DD8D72D00213977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F477F5D1DD8D78100213977 /* MainStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainStrings.h; sourceTree = "<group>"; };
+		7F477F5E1DD8D7A100213977 /* MainStrings.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = MainStrings.strings; sourceTree = "<group>"; };
+		7F477F601DD8D7DB00213977 /* ToStringsFileScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ToStringsFileScript.sh; sourceTree = "<group>"; };
+		7F59B19C1DD8F9AA00566F25 /* AlternateStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlternateStrings.h; sourceTree = "<group>"; };
+		7F59B19D1DD8F9BC00566F25 /* AlternateStrings.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AlternateStrings.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +112,11 @@
 				7F477F2E1DD8D72C00213977 /* AppDelegate.m */,
 				7F477F301DD8D72C00213977 /* ViewController.h */,
 				7F477F311DD8D72C00213977 /* ViewController.m */,
+				7F59B19C1DD8F9AA00566F25 /* AlternateStrings.h */,
+				7F59B19D1DD8F9BC00566F25 /* AlternateStrings.strings */,
+				7F477F5D1DD8D78100213977 /* MainStrings.h */,
+				7F477F5E1DD8D7A100213977 /* MainStrings.strings */,
+				7F477F601DD8D7DB00213977 /* ToStringsFileScript.sh */,
 				7F477F331DD8D72C00213977 /* Main.storyboard */,
 				7F477F361DD8D72C00213977 /* Assets.xcassets */,
 				7F477F381DD8D72C00213977 /* LaunchScreen.storyboard */,
@@ -150,6 +162,7 @@
 				7F477F231DD8D72C00213977 /* Sources */,
 				7F477F241DD8D72C00213977 /* Frameworks */,
 				7F477F251DD8D72C00213977 /* Resources */,
+				7F477F611DD8D81900213977 /* ToStringsFileScript */,
 			);
 			buildRules = (
 			);
@@ -246,8 +259,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F59B19E1DD8F9BC00566F25 /* AlternateStrings.strings in Resources */,
 				7F477F3A1DD8D72C00213977 /* LaunchScreen.storyboard in Resources */,
 				7F477F371DD8D72C00213977 /* Assets.xcassets in Resources */,
+				7F477F5F1DD8D7A100213977 /* MainStrings.strings in Resources */,
 				7F477F351DD8D72C00213977 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +282,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7F477F611DD8D81900213977 /* ToStringsFileScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = ToStringsFileScript;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "script=\"${SRCROOT}/Localization script/ToStringsFileScript.sh\"\n\nstringsSource=\"${SRCROOT}/Localization script/MainStrings.h\"\nstringsFile=\"${SRCROOT}/Localization script/MainStrings.strings\"\nsh \"$script\" \"$stringsSource\" \"$stringsFile\" \"Greeting\"\n\nstringsSource=\"${SRCROOT}/Localization script/AlternateStrings.h\"\nstringsFile=\"${SRCROOT}/Localization script/AlternateStrings.strings\"\nsh \"$script\" \"$stringsSource\" \"$stringsFile\" \"Alternate\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7F477F231DD8D72C00213977 /* Sources */ = {
@@ -507,6 +539,7 @@
 				7F477F561DD8D72D00213977 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F477F571DD8D72D00213977 /* Build configuration list for PBXNativeTarget "Localization scriptTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +548,7 @@
 				7F477F591DD8D72D00213977 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F477F5A1DD8D72D00213977 /* Build configuration list for PBXNativeTarget "Localization scriptUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +557,7 @@
 				7F477F5C1DD8D72D00213977 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
